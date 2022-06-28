@@ -1,0 +1,30 @@
+---
+- name: System update
+  import_tasks: system_update.yml
+  tags:
+    - system_update
+
+- name: System common packages
+  import_tasks: system_packages.yml
+  tags:
+    - system_packages
+
+#- name: System settings
+#  import_tasks: system_settings.yml
+#  tags:
+#    - system_settings
+
+#- name: System users
+#  import_tasks: system_users.yml
+#  tags:
+#    - system_users
+
+#- name: System sudo
+#  import_tasks: system_sudo.yml
+#  tags:
+#    - system_sudo
+
+#- name: System MC
+#  import_tasks: system_mc.yml
+#  tags:
+#    - system_mc

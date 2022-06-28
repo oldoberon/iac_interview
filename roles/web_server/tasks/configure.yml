@@ -1,0 +1,6 @@
+---
+- name: Set UI access credentials
+  template:
+    src: default.conf.j2
+    dest: /etc/nginx/conf.d/default.conf
+  notify: restart nginx

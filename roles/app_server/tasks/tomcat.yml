@@ -1,0 +1,45 @@
+---
+
+- name: Download tomcat
+  get_url:
+    url: "{{ app_server__download_url }}"
+    dest: "{{ app_server__download_path }}"
+
+- name: Extract tomcat archive
+  unarchive:
+    src: "{{ app_server__download_path }}"
+    dest: "{{ app_server__home }}"
+    owner: "{{ app_server__user }}"
+    group: "{{ app_server__group }}"
+    remote_src: true
+    extra_opts: "--strip-components=1"
+    creates: "{{ app_server__home }}/bin"
+
+- name: Copy tomcat service file
+  template:
+    src: tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+#  when: ansible_service_mgr == "systemd"
+
+- name: Start and enable tomcat
+  service:
+    daemon_reload: yes
+    name: tomcat
+    state: started
+    enabled: yes
+#  when: ansible_service_mgr == "systemd"
+
+- name: Set UI access credentials
+  template:
+    src: tomcat-users.xml.j2
+    dest: "{{ app_server__home }}/conf/tomcat-users.xml"
+  notify: restart tomcat
+
+- name: Allow access to Manager and Host Manager apps from any IP
+  template:
+    src: context.xml.j2 
+    dest: "{{ item }}"
+  with_items:
+    - "{{ app_server__home }}/webapps/host-manager/META-INF/context.xml"
+    - "{{ app_server__home }}/webapps/manager/META-INF/context.xml"
+  notify: restart tomcat

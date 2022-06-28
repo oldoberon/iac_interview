@@ -1,0 +1,15 @@
+---
+- name: Copy backup script
+  copy:
+    src: nginx_config_backup.sh
+    dest: /root/nginx_config_backup.sh
+    owner: root
+    group: root
+    mode: '0744'
+
+- name: Shedule backup
+  cron:
+    name: "Backup nginx configs"
+    minute: "0"
+    hour: "1"
+    job: "/root/nginx_config_backup.sh"

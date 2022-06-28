@@ -1,0 +1,21 @@
+---
+
+- name: Install JDK
+  import_tasks: jdk.yml
+  tags:
+    - appserver_jdk
+
+- name: Create user
+  import_tasks: user.yml
+  tags:
+    - appserver_user
+
+- name: Install tomcat
+  import_tasks: tomcat.yml
+  tags:
+    - appserver_tomcat
+
+- name: Install jenkins
+  import_tasks: jenkins.yml
+  tags:
+    - appserver_jenkins

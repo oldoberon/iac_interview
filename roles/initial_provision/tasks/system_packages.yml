@@ -1,0 +1,8 @@
+---
+
+- name: APT install common packages
+  become: true
+  apt:
+    name: "{{ initial_provision__common_packages }}"
+    state: 'present'
+    force_apt_get: true

@@ -1,0 +1,17 @@
+---
+- name: Initial hosts provision
+  hosts: interview
+  roles:
+    - role: initial_provision
+    
+- name: App-server setup
+  hosts: interview_app
+  roles:
+    - role: app_server
+
+- name: Web-server setup
+  hosts: interview_web
+  roles:
+    - role: web_server
+
+

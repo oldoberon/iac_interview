@@ -1,0 +1,9 @@
+---
+
+- name: Install JDK
+  apt:
+    name: "{{ app_server__jdk }}"
+    state: 'present'
+    update_cache: true
+    cache_valid_time: 3600
+    force_apt_get: true

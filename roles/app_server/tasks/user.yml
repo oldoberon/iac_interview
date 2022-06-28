@@ -1,0 +1,21 @@
+---
+
+- name: Create app-server group
+  group:
+    name: "{{ app_server__user }}"
+
+- name: Create app-server user
+  user:
+    name: "{{ app_server__user }}"
+    group: "{{ app_server__group }}"
+    home: "{{ app_server__home }}"
+    createhome: false
+    system: true
+
+- name: Create app-server home
+  file:
+    path: "{{ app_server__home }}"
+    state: 'directory'
+    owner: "{{ app_server__user }}"
+    group: "{{ app_server__group }}"
+    mode: '0755'

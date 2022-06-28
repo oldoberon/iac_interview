@@ -1,0 +1,19 @@
+---
+app_server__admin_user: 'admin'
+app_server__admin_pass: 'admin'
+app_server__manager_user: 'manager'
+app_server__manager_pass: 'manager'
+
+app_server__jdk: 'openjdk-8-jdk'
+app_server__java_home: '/usr/lib/jvm/java-8-openjdk-amd64'
+
+app_server__user: 'tomcat'
+app_server__group: 'tomcat'
+app_server__home: '/usr/share/tomcat'
+app_server__version: 9.0.64
+app_server__download_url: 'https://dlcdn.apache.org/tomcat/tomcat-{{ app_server__version | split(".") | first }}/v{{ app_server__version }}/bin/apache-tomcat-{{ app_server__version }}.tar.gz'
+app_server__download_path: '/tmp/apache-tomcat-{{ app_server__version }}.tar.gz'
+
+app_server__jenkins_version: 'latest'
+app_server__jenkins_download_url: 'https://mirrors.jenkins.io/war-stable/{{ app_server__jenkins_version }}/jenkins.war'
+app_server__jenkins_war_path: '{{ app_server__home }}/webapps/ROOT.war'

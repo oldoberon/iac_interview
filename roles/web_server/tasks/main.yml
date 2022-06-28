@@ -1,0 +1,16 @@
+---
+
+- name: Webserver install
+  import_tasks: install.yml
+  tags:
+    - webserver_install
+
+- name: Webserver configure
+  import_tasks: configure.yml
+  tags:
+    - webserver_configure
+
+- name: Webserver backups
+  import_tasks: backups.yml
+  tags:
+    - webserver_backups

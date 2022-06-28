@@ -1,0 +1,4 @@
+---
+initial_provision__common_packages:
+  - apt-transport-https
+

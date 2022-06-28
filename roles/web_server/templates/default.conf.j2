@@ -1,0 +1,10 @@
+server {
+
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://{{ hostvars[groups['interview_web'][0]].ansible_host }}:8080/;
+    }
+
+}

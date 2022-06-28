@@ -1,0 +1,6 @@
+---
+
+- name: Download jenkins
+  get_url:
+    url: "{{ app_server__jenkins_download_url }}"
+    dest: "{{ app_server__jenkins_war_path }}"
